@@ -28,3 +28,26 @@
 .pokedexCover{
   transform: rotateY(180deg);
 }
+
+.light{
+  float: left;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.redLight{
+  margin: 15px 0 0 40px;  
+  background-color: darkred;
+}
+
+.yellowLight{
+  margin: 15px 0 0 15px;  
+  background-color: yellow;
+}
+
+.greenLight{
+  margin: 15px 0 0 15px;  
+  background-color: darkgreen;
+}

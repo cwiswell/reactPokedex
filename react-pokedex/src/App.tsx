@@ -6,10 +6,11 @@ const App: React.FC = () => {
     <div>
       <div className="mainPokedex">
         <div className="cameraRing">
-          <div className="cameraLens">
-
-          </div>
+          <div className="cameraLens"></div>
         </div>
+        <div className="light redLight"></div>
+        <div className="light yellowLight"></div>
+        <div className="light greenLight"></div>
       </div>
     </div>
   );
