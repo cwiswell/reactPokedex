@@ -24,3 +24,7 @@
   border:1px black solid;
   float:left;
 }
+
+.pokedexCover{
+  transform: rotateY(180deg);
+}
