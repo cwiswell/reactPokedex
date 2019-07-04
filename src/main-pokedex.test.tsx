@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './main-pokedex';
+import { shallow } from 'enzyme';
+import Pokedex from './main-pokedex';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+
+describe('', () =>{
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Pokedex />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('shallow renders without crashing', () => {
+    const calc = shallow(<Pokedex />);
+  })
 });
