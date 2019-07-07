@@ -1,0 +1,15 @@
+.mainPanel{
+    border: 1px black solid;
+    width: 400px;
+    margin-top: 100px;
+    height: 600px;
+}
+
+.backgroundImagePanel{
+    background-color: #c9c9c9;
+    border: 1px black solid;
+    width: 300px;
+    height: 300px;
+    margin: 20px 50px 0 50px;
+    border-radius: 10px;
+}
