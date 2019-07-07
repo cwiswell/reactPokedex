@@ -17,7 +17,11 @@ class Pokedex extends Component<any, PokedexState> {
           <div className="light redLight"></div>
           <div className="light yellowLight"></div>
           <div className="light greenLight"></div>
-          <div className="mainPanel"></div>
+          <div className="mainPanel">
+            <div className="backgroundImagePanel">
+
+            </div>
+          </div>
         </div>
         <div className="pokedexSidePanel">
 
