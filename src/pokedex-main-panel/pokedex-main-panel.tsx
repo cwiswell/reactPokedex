@@ -5,7 +5,9 @@ const PokedexMainPanel: React.FC = () => {
     return (
         <div className="mainPanel">
             <div className="backgroundImagePanel">
+                <div className="spritePanel">
 
+                </div>
             </div>
         </div>
     )
