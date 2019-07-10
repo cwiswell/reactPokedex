@@ -25,6 +25,8 @@ const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
                 </div>
 
             </div>
+
+            <input type="text" className="pokemonSearchInput" />
         </div>
     )
 }

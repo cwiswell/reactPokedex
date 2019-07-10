@@ -82,3 +82,17 @@
     width:70px;
     height: 6px;
 }
+
+.pokemonSearchInput{
+    padding: 30px 10px;
+    background-color: darkseagreen;
+    margin-left: 60px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.pokemonSearchInput:focus{
+    outline-color: transparent;
+    outline-style: none;
+}
