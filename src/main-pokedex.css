@@ -14,14 +14,6 @@
   float: left;
 }
 
-.pokedexSidePanel{
-  background-color: red;
-  width: 400px;
-  height: 500px;
-  margin-top: 150px;
-  border: 1px black solid;
-  float: left;
-}
 .cameraLens{
   margin:9px;  
   background-color: #236dad;

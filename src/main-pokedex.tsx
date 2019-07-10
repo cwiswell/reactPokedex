@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './main-pokedex.css';
 import PokedexMainPanel from './pokedex-main-panel/pokedex-main-panel';
+import PokedexSidePanel from './pokedex-side-panel/pokedex-side-panel';
 
 type PokedexState = {
 
@@ -20,9 +21,7 @@ class Pokedex extends Component<any, PokedexState> {
           <div className="light greenLight"></div>
           <PokedexMainPanel spriteUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"/>
         </div>
-        <div className="pokedexSidePanel">
-
-        </div>
+        <PokedexSidePanel />
       </div>
     );
   };
