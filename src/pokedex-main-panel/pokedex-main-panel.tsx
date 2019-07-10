@@ -18,6 +18,10 @@ const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
                         <img src={props.spriteUrl} alt="pokemon sprite" width="100%" />
                     </div>
                     <div className="imagePanelBottomLight"></div>
+                    <div className="lineContainer">
+                        <div className="lineDiv"></div>
+                        <div className="lineDiv"></div>
+                    </div>
                 </div>
 
             </div>

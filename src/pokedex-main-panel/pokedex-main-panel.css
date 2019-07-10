@@ -66,3 +66,19 @@
     border: .5px solid black;
     background-color: darkred;
 }
+
+.lineContainer{
+    float: left;
+    width: 30px;
+    margin-top: 5px;
+    margin-left: 190px;
+}
+
+.lineDiv{
+    float: right;
+    margin-top: 6px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width:70px;
+    height: 6px;
+}
