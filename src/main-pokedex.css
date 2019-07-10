@@ -7,7 +7,7 @@
 .mainPokedex{
   background-color: red;
   width: 400px;
-  height: 700px;
+  height: 600px;
   margin: 50px 0 0 50px;
   border-radius: 10px;
   border: 1px black solid;
@@ -17,7 +17,7 @@
 .pokedexSidePanel{
   background-color: red;
   width: 400px;
-  height: 600px;
+  height: 500px;
   margin-top: 150px;
   border: 1px black solid;
   float: left;
