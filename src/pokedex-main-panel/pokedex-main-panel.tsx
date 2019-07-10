@@ -1,6 +1,8 @@
 import React from 'react';
 import './pokedex-main-panel.css';
 
+import PokedexImagePanel from '../pokedex-image-panel/pokedex-image-panel';
+
 // replace the src with data from api
 
 type PokedexMainPanelProp = {
@@ -10,21 +12,7 @@ type PokedexMainPanelProp = {
 const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
     return (
         <div className="mainPanel">
-            <div className="backgroundImagePanelBorder">
-                <div className="backgroundImagePanel">
-                    <div className="leftLight imagePanelSmallLight"></div>
-                    <div className="rightLight imagePanelSmallLight"></div>
-                    <div className="spritePanel">
-                        <img src={props.spriteUrl} alt="pokemon sprite" width="100%" />
-                    </div>
-                    <div className="imagePanelBottomLight"></div>
-                    <div className="lineContainer">
-                        <div className="lineDiv"></div>
-                        <div className="lineDiv"></div>
-                    </div>
-                </div>
-
-            </div>
+            <PokedexImagePanel spriteUrl={props.spriteUrl} />
             <div className="bottomLeftContainer">
                 <div className="leftBlackButton"></div>
                 <input type="text" className="pokemonSearchInput" />
