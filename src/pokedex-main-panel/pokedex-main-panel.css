@@ -5,12 +5,15 @@
     height: 600px;
 }
 
-.bottomLeftContianer{
+.bottomLeftContainer{
+    width: 250px;
     float:left;
 }
 
 .bottomRightContainer{
     float:left;
+    height:3000px;
+    width:90px;
 }
 
 .leftBlackButton{
@@ -24,8 +27,9 @@
 }
 
 .pokemonSearchInput{
+    width:150px;
     float: left;
-    padding: 30px 10px;
+    padding: 35px 10px;
     background-color: darkseagreen;
     margin-left: 60px;
     margin-top: 5px;
@@ -37,4 +41,13 @@
 .pokemonSearchInput:focus{
     outline-color: transparent;
     outline-style: none;
+}
+
+.buttonPad{    
+    margin-top: 40px;
+    width: 90px;
+    height: 90px;
+    background-color: black;
+    clip-path: 
+    polygon(65% 0, 35% 0, 35% 35%, 0 35%, 0 65%, 35% 65%, 35% 100%, 65% 100%, 65% 65%, 100% 65%, 100% 35%, 65% 35%);
 }
