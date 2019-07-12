@@ -15,6 +15,8 @@ const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
             <PokedexImagePanel spriteUrl={props.spriteUrl} />
             <div className="bottomLeftContainer">
                 <div className="leftBlackButton"></div>
+                <div className="midButton redMidBtn"></div>
+                <div className="midButton greyMidBtn"></div>
                 <input type="text" className="pokemonSearchInput" />
 
             </div>

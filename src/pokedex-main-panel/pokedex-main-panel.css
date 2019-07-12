@@ -26,6 +26,24 @@
     background-color: rgb(29, 29, 29);
 }
 
+.midButton{
+    float: left;
+    margin-top: 20px;
+    margin-left: 10px;
+    height: 10px;
+    width: 50px;
+    border-radius: 5px;
+    border: 1px black solid;
+}
+
+.redMidBtn{
+    background-color: rgb(192, 2, 2);
+}
+
+.greyMidBtn{
+    background-color: grey;
+}
+
 .pokemonSearchInput{
     width:150px;
     float: left;
