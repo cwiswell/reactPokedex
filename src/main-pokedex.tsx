@@ -9,6 +9,12 @@ type PokedexState = {
 
 class Pokedex extends Component<any, PokedexState> {
 
+  
+  onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    //this.setState({ input: e.target.value });
+  };
+
   render() {
     return (
       <div className="background">
@@ -19,7 +25,7 @@ class Pokedex extends Component<any, PokedexState> {
           <div className="light redLight"></div>
           <div className="light yellowLight"></div>
           <div className="light greenLight"></div>
-          <PokedexMainPanel spriteUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"/>
+          <PokedexMainPanel spriteUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" changeFunction={this.onInputChange}/>
         </div>
         <PokedexSidePanel name="Pikachu" weight={4} height={60} />
       </div>

@@ -6,7 +6,8 @@ import PokedexImagePanel from '../pokedex-image-panel/pokedex-image-panel';
 // replace the src with data from api
 
 type PokedexMainPanelProp = {
-    spriteUrl: string
+    spriteUrl: string;
+    changeFunction: (event: React.ChangeEvent<HTMLInputElement>) => void ;
 }
 
 const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
@@ -17,7 +18,7 @@ const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
                 <div className="leftBlackButton"></div>
                 <div className="midButton redMidBtn"></div>
                 <div className="midButton greyMidBtn"></div>
-                <input type="text" className="pokemonSearchInput" />
+                <input type="text" className="pokemonSearchInput" onChange={props.changeFunction} />
 
             </div>
             <div className="bottomRightContainer">
