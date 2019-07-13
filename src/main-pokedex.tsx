@@ -21,7 +21,7 @@ class Pokedex extends Component<any, PokedexState> {
           <div className="light greenLight"></div>
           <PokedexMainPanel spriteUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"/>
         </div>
-        <PokedexSidePanel name="Pikachu" weight="" height="" />
+        <PokedexSidePanel name="Pikachu" weight={4} height={60} />
       </div>
     );
   };

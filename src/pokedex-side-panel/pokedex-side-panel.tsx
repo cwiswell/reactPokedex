@@ -3,14 +3,14 @@ import './pokedex-side-panel.css';
 
 type PokedexSidePanelState = {
   name: string | null;
-  height: string | null;
-  weight: string | null;
+  height: number | null;
+  weight: number | null;
 }
 
 type PokedexSidePanelProps = {
   name: string | null;
-  height: string | null;
-  weight: string | null;
+  height: number | null;
+  weight: number | null;
 }
 
 class PokedexSidePanel extends Component<PokedexSidePanelProps, PokedexSidePanelState> {
@@ -25,6 +25,10 @@ class PokedexSidePanel extends Component<PokedexSidePanelProps, PokedexSidePanel
         <div className="pokedexSidePanel">
           <div className="descriptionArea">
             <div>Name:  {this.state.name}</div>
+            
+            <div>Height:  {this.state.height}dm</div>
+            
+            <div>Weight:  {this.state.weight}hg</div>
           </div>
         </div>
     );
