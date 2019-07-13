@@ -10,7 +10,7 @@ class PokedexSidePanel extends Component<any, PokedexSidePanelState> {
   render() {
     return (
         <div className="pokedexSidePanel">
-
+          <div className="descriptionArea"></div>
         </div>
     );
   };

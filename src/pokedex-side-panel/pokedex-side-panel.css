@@ -6,3 +6,13 @@
     border: 1px black solid;
     float: left;
   }
+
+.descriptionArea{
+  width: 350px;
+  height: 100px;
+  margin-top: 20px;
+  margin-left: 25px;
+  border: 1px black solid;
+  background-color: #242424;
+  border-radius: 20px;
+}
