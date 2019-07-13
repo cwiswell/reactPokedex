@@ -21,14 +21,17 @@ class PokedexSidePanel extends Component<PokedexSidePanelProps, PokedexSidePanel
   }
 
   render() {
+    let height = this.state.height === null ? "N/A" : `${this.state.height} dm`;
+    let weight = this.state.weight === null ? "N/A" : `${this.state.weight} hg`;
+
     return (
         <div className="pokedexSidePanel">
           <div className="descriptionArea">
             <div>Name:  {this.state.name}</div>
             
-            <div>Height:  {this.state.height}dm</div>
+            <div>Height:  {height}</div>
             
-            <div>Weight:  {this.state.weight}hg</div>
+            <div>Weight:  {weight}</div>
           </div>
         </div>
     );
