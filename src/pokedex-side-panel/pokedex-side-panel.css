@@ -8,11 +8,13 @@
   }
 
 .descriptionArea{
-  width: 350px;
-  height: 100px;
+  width: 340px;
+  height: 150px;
   margin-top: 20px;
   margin-left: 25px;
   border: 1px black solid;
   background-color: #242424;
+  color: white;
+  padding: 5px;
   border-radius: 20px;
 }
