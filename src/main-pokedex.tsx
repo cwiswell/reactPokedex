@@ -4,7 +4,7 @@ import PokedexMainPanel from './pokedex-main-panel/pokedex-main-panel';
 import PokedexSidePanel from './pokedex-side-panel/pokedex-side-panel';
 
 type PokedexState = {
-
+  searchString: string | null;
 }
 
 class Pokedex extends Component<any, PokedexState> {
@@ -12,7 +12,11 @@ class Pokedex extends Component<any, PokedexState> {
   
   onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
-    //this.setState({ input: e.target.value });
+    this.setState({ searchString: e.target.value });
+  };
+
+  searchPokemon = () => {
+    console.log(`Search ${this.state.searchString}`);
   };
 
   render() {
@@ -25,7 +29,7 @@ class Pokedex extends Component<any, PokedexState> {
           <div className="light redLight"></div>
           <div className="light yellowLight"></div>
           <div className="light greenLight"></div>
-          <PokedexMainPanel spriteUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" changeFunction={this.onInputChange}/>
+          <PokedexMainPanel spriteUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" changeFunction={this.onInputChange} searchFunction={this.searchPokemon}/>
         </div>
         <PokedexSidePanel name="Pikachu" weight={4} height={60} />
       </div>

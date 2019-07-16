@@ -8,9 +8,16 @@ import PokedexImagePanel from '../pokedex-image-panel/pokedex-image-panel';
 type PokedexMainPanelProp = {
     spriteUrl: string;
     changeFunction: (event: React.ChangeEvent<HTMLInputElement>) => void ;
+    searchFunction: () => void;
 }
 
 const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
+    let keyUpFunction = (event: React.KeyboardEvent<HTMLInputElement>) =>{
+        if(event.key === 'Enter'){
+            props.searchFunction();
+        }
+    }
+
     return (
         <div className="mainPanel">
             <PokedexImagePanel spriteUrl={props.spriteUrl} />
@@ -18,7 +25,10 @@ const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
                 <div className="leftBlackButton"></div>
                 <div className="midButton redMidBtn"></div>
                 <div className="midButton greyMidBtn"></div>
-                <input type="text" className="pokemonSearchInput" onChange={props.changeFunction} />
+                <input type="text" className="pokemonSearchInput" 
+                            onChange={props.changeFunction} 
+                            onBlur={props.searchFunction} 
+                            onKeyUp={keyUpFunction} />
 
             </div>
             <div className="bottomRightContainer">
