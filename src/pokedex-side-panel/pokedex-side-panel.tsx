@@ -5,19 +5,22 @@ type PokedexSidePanelState = {
   name: string | null;
   height: number | null;
   weight: number | null;
+  pokemonNumber: number | null;
 }
 
 type PokedexSidePanelProps = {
   name: string | null;
   height: number | null;
   weight: number | null;
+  pokemonNumber: number | null;
 }
 
 class PokedexSidePanel extends Component<PokedexSidePanelProps, PokedexSidePanelState> {
   state: PokedexSidePanelState = {
     name: this.props.name,
     height: this.props.height,
-    weight: this.props.weight
+    weight: this.props.weight,
+    pokemonNumber: this.props.pokemonNumber
   }
 
   render() {
@@ -28,7 +31,7 @@ class PokedexSidePanel extends Component<PokedexSidePanelProps, PokedexSidePanel
         <div className="pokedexSidePanel">
           <div className="descriptionArea">
             <div>Name:  {this.state.name}</div>
-            
+            <div># {this.state.pokemonNumber}</div>
             <div>Height:  {height}</div>
             
             <div>Weight:  {weight}</div>

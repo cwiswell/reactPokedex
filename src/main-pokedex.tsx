@@ -33,9 +33,9 @@ class Pokedex extends Component<any, PokedexState> {
           <div className="light redLight"></div>
           <div className="light yellowLight"></div>
           <div className="light greenLight"></div>
-          <PokedexMainPanel spriteUrl={this.state.spriteUrl} changeFunction={this.onInputChange} searchFunction={this.searchPokemon}/>
+          <PokedexMainPanel spriteUrl={this.state.spriteUrl} changeFunction={this.onInputChange} searchFunction={this.searchPokemon} />
         </div>
-        <PokedexSidePanel name="Pikachu" weight={4} height={60} />
+        <PokedexSidePanel name="Pikachu" weight={4} height={60} pokemonNumber={25} />
       </div>
     );
   };
