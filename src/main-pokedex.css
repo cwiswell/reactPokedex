@@ -17,7 +17,6 @@
 .cameraLens{
   margin:4px;  
   background: radial-gradient(circle at 20px 20px, #43a5fa, #1a5283);
-  /* background-color: #236dad; */
   height: 60px;
   width: 60px;
   border-radius: 30px;  
