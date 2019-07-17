@@ -4,7 +4,7 @@ import './pokedex-image-panel.css';
 // replace the src with data from api
 
 type PokedexImagePanelProp = {
-    spriteUrl: string
+    spriteUrl: string | null
 }
 
 const PokedexImagePanel: React.FC<PokedexImagePanelProp> = (props) => {
@@ -14,7 +14,7 @@ const PokedexImagePanel: React.FC<PokedexImagePanelProp> = (props) => {
                     <div className="leftLight imagePanelSmallLight"></div>
                     <div className="rightLight imagePanelSmallLight"></div>
                     <div className="spritePanel">
-                        <img src={props.spriteUrl} alt="pokemon sprite" width="100%" />
+                        <img src={props.spriteUrl == null ? undefined : props.spriteUrl} alt="pokemon sprite" width="100%" />
                     </div>
                     <div className="imagePanelBottomLight"></div>
                     <div className="lineContainer">

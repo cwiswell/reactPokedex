@@ -5,11 +5,15 @@ import PokedexSidePanel from './pokedex-side-panel/pokedex-side-panel';
 
 type PokedexState = {
   searchString: string | null;
+  spriteUrl: string | null;
 }
 
 class Pokedex extends Component<any, PokedexState> {
+  state: PokedexState = {
+    searchString: null,
+    spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+  }
 
-  
   onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
     this.setState({ searchString: e.target.value });
@@ -29,7 +33,7 @@ class Pokedex extends Component<any, PokedexState> {
           <div className="light redLight"></div>
           <div className="light yellowLight"></div>
           <div className="light greenLight"></div>
-          <PokedexMainPanel spriteUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" changeFunction={this.onInputChange} searchFunction={this.searchPokemon}/>
+          <PokedexMainPanel spriteUrl={this.state.spriteUrl} changeFunction={this.onInputChange} searchFunction={this.searchPokemon}/>
         </div>
         <PokedexSidePanel name="Pikachu" weight={4} height={60} />
       </div>
