@@ -37,11 +37,11 @@
 }
 
 .redMidBtn{
-    background-color: rgb(192, 2, 2);
+    background: radial-gradient(circle at 0 0, #ff0000, rgb(192, 2, 2));
 }
 
 .greyMidBtn{
-    background-color: grey;
+    background: radial-gradient(circle at 0 0, #979696, grey);
 }
 
 .pokemonSearchInput{
