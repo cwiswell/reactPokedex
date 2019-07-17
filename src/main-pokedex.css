@@ -47,15 +47,15 @@
 
 .redLight{
   margin: 15px 0 0 40px;  
-  background-color: darkred;
+  background: radial-gradient(circle at 3px 3px, #ff2424, darkred);
 }
 
 .yellowLight{
   margin: 15px 0 0 15px;  
-  background-color: yellow;
+  background: radial-gradient(circle at 3px 3px, #f0ff6c, yellow);
 }
 
 .greenLight{
   margin: 15px 0 0 15px;  
-  background-color: darkgreen;
+  background: radial-gradient(circle at 3px 3px, #24ff2f, darkgreen);
 }
