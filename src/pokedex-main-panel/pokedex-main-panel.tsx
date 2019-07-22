@@ -33,7 +33,9 @@ const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
 
                 </div>
                 <div className="bottomRightContainer">
-                    <div className="buttonPad"></div>
+                    <div className="buttonPadBackground">
+                        <div className="buttonPad"></div>
+                    </div>
                 </div>
             </div>
         </div>
