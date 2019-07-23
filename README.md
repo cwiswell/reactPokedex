@@ -1,3 +1,9 @@
+# Description
+
+This application is a practice to re-create a pokedex in React with Typescript. The data will be supplied using Pokeapi.
+
+# Development Details
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
