@@ -3,8 +3,6 @@ import './pokedex-main-panel.css';
 
 import PokedexImagePanel from '../pokedex-image-panel/pokedex-image-panel';
 
-// replace the src with data from api
-
 type PokedexMainPanelProp = {
     spriteUrl: string | null;
     changeFunction: (event: React.ChangeEvent<HTMLInputElement>) => void;
