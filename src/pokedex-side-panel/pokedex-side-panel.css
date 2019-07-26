@@ -19,3 +19,7 @@
   padding: 5px;
   border-radius: 20px;
 }
+
+.nameDiv{
+  text-transform: capitalize;
+}

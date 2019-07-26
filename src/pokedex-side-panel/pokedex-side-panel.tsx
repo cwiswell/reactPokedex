@@ -1,12 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './pokedex-side-panel.css';
-
-type PokedexSidePanelState = {
-  name: string | null;
-  height: number | null;
-  weight: number | null;
-  pokemonNumber: number | null;
-}
 
 type PokedexSidePanelProps = {
   name: string | null;
@@ -15,30 +8,22 @@ type PokedexSidePanelProps = {
   pokemonNumber: number | null;
 }
 
-class PokedexSidePanel extends Component<PokedexSidePanelProps, PokedexSidePanelState> {
-  state: PokedexSidePanelState = {
-    name: this.props.name,
-    height: this.props.height,
-    weight: this.props.weight,
-    pokemonNumber: this.props.pokemonNumber
-  }
-
-  render() {
-    let height = this.state.height === null ? "N/A" : `${this.state.height} dm`;
-    let weight = this.state.weight === null ? "N/A" : `${this.state.weight} hg`;
-
+const PokedexSidePanel: React.FC<PokedexSidePanelProps> = (props) => {
+    let height = props.height === null ? "N/A" : `${props.height} dm`;
+    let weight = props.weight === null ? "N/A" : `${props.weight} hg`;
+    
     return (
         <div className="pokedexSidePanel">
           <div className="descriptionArea">
-            <div>Name:  {this.state.name}</div>
-            <div># {this.state.pokemonNumber}</div>
+            <div className="nameDiv">Name:  {props.name}</div>
+            <div># {props.pokemonNumber}</div>
             <div>Height:  {height}</div>
             
             <div>Weight:  {weight}</div>
           </div>
         </div>
     );
-  };
+  
 }
 
 export default PokedexSidePanel;

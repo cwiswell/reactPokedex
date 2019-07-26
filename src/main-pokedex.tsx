@@ -8,39 +8,38 @@ import Pokemon from './interfaces/pokemon';
 type PokedexState = {
   pokemon: Pokemon | null;
   searchString: string | null;
-  spriteUrl: string | null;
 }
 
 class Pokedex extends Component<any, PokedexState> {
   state: PokedexState = {
     pokemon: null,
-    searchString: null,
-    spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+    searchString: null
   }
   pokeapi: PokeApiService = new PokeApiService();
 
   onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     this.setState({ searchString: e.target.value });
   };
 
   searchPokemon = () => {
-    console.log(`Search ${this.state.searchString}`);
     let pokemonDataPromise = this.pokeapi.getPokemon(this.state.searchString);
 
     if (pokemonDataPromise === undefined || pokemonDataPromise === null) {
       return;
     }
 
+    let currentScope = this;
+
     pokemonDataPromise.then(function (data) {
-      if(data == null)
-        return;
-      //console.log("in main class", data);
-      console.log(data.sprites);
+      if (data == null) { return; }
+
+      currentScope.setState({ pokemon: data });
     })
   };
 
   render() {
+    let currentPokemon = this.state.pokemon;
+    
     return (
       <div className="background">
         <div className="mainPokedex">
@@ -50,9 +49,12 @@ class Pokedex extends Component<any, PokedexState> {
           <div className="light redLight"></div>
           <div className="light yellowLight"></div>
           <div className="light greenLight"></div>
-          <PokedexMainPanel spriteUrl={this.state.spriteUrl} changeFunction={this.onInputChange} searchFunction={this.searchPokemon} />
+          <PokedexMainPanel spriteUrl={currentPokemon == null ? null : currentPokemon.sprites.front_default} changeFunction={this.onInputChange} searchFunction={this.searchPokemon} />
         </div>
-        <PokedexSidePanel name="Pikachu" weight={4} height={60} pokemonNumber={25} />
+        <PokedexSidePanel name={currentPokemon == null ? null : currentPokemon.name}
+                          weight={currentPokemon == null ? null : currentPokemon.weight} 
+                          height={currentPokemon == null ? null : currentPokemon.height} 
+                          pokemonNumber={currentPokemon == null ? null : currentPokemon.id} />
       </div>
     );
   };
