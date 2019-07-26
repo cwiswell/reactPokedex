@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './main-pokedex.css';
 import PokedexMainPanel from './pokedex-main-panel/pokedex-main-panel';
 import PokedexSidePanel from './pokedex-side-panel/pokedex-side-panel';
+import PokeApiService from './libs/pokeapi';
 
 type PokedexState = {
   searchString: string | null;
@@ -13,6 +14,7 @@ class Pokedex extends Component<any, PokedexState> {
     searchString: null,
     spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
   }
+  pokeapi: PokeApiService = new PokeApiService();
 
   onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
@@ -21,6 +23,7 @@ class Pokedex extends Component<any, PokedexState> {
 
   searchPokemon = () => {
     console.log(`Search ${this.state.searchString}`);
+    this.pokeapi.getPokemon(this.state.searchString);
   };
 
   render() {
