@@ -1,26 +1,36 @@
 import axios from 'axios';
 
-const CACHE_PREFIX = "pokeapi-ts-wrapper-";
+//const CACHE_PREFIX = "pokeapi-ts-wrapper-";
+const apiPrefix: string = 'https://pokeapi.co/api/v2';
 
 export default class PokeApiService {
-    apiPrefix: string = 'https://pokeapi.co/api/v2';
 
     getPokemon = (name: string | null) => {
         if (name === null) {
             return;
         }
-        
-        axios.get(`${this.apiPrefix}/pokemon/${name}`)
+
+        return axios.get(`${apiPrefix}/pokemon/${name}`)
             .then(function (response) {
-                // handle success
-                console.log(response);
+                let data = response.data;
+
+                return data;
             })
             .catch(function (error) {
                 // handle error
                 console.log(error);
+                return null;
+            });
+    }
+
+    getData = (url: string) => {
+        return axios.get(url)
+            .then(function (response) {
+                return response.data;
             })
-            .finally(function () {
-                // always executed
+            .catch(function (error) {
+                console.log(error);
+                return null;
             });
     }
 }
