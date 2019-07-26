@@ -8,13 +8,15 @@ type PokedexImagePanelProp = {
 }
 
 const PokedexImagePanel: React.FC<PokedexImagePanelProp> = (props) => {
+    let imgArea = props.spriteUrl == null ? null : (<img src={props.spriteUrl} alt="pokemon sprite" width="100%" />)
+
     return (
             <div className="backgroundImagePanelBorder">
                 <div className="backgroundImagePanel">
                     <div className="leftLight imagePanelSmallLight"></div>
                     <div className="rightLight imagePanelSmallLight"></div>
                     <div className="spritePanel">
-                        <img src={props.spriteUrl == null ? undefined : props.spriteUrl} alt="pokemon sprite" width="100%" />
+                        {imgArea}
                     </div>
                     <div className="imagePanelBottomLight"></div>
                     <div className="lineContainer">
