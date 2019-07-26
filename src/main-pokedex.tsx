@@ -23,13 +23,13 @@ class Pokedex extends Component<any, PokedexState> {
 
   searchPokemon = () => {
     console.log(`Search ${this.state.searchString}`);
-    let pokemonDataPromise= this.pokeapi.getPokemon(this.state.searchString);
+    let pokemonDataPromise = this.pokeapi.getPokemon(this.state.searchString);
 
-    if(pokemonDataPromise === undefined){
+    if (pokemonDataPromise === undefined || pokemonDataPromise === null) {
       return;
     }
 
-    pokemonDataPromise.then(function(data){
+    pokemonDataPromise.then(function (data) {
       console.log("in main class", data);
     })
   };
