@@ -23,7 +23,7 @@ export default class PokeApiService {
             });
     }
 
-    getData = (url: string) => {
+    getData = <T extends {}>(url: string) : Promise<T> => {
         return axios.get(url)
             .then(function (response) {
                 return response.data;
