@@ -3,14 +3,17 @@ import './main-pokedex.css';
 import PokedexMainPanel from './pokedex-main-panel/pokedex-main-panel';
 import PokedexSidePanel from './pokedex-side-panel/pokedex-side-panel';
 import PokeApiService from './libs/pokeapi';
+import Pokemon from './interfaces/pokemon';
 
 type PokedexState = {
+  pokemon: Pokemon | null;
   searchString: string | null;
   spriteUrl: string | null;
 }
 
 class Pokedex extends Component<any, PokedexState> {
   state: PokedexState = {
+    pokemon: null,
     searchString: null,
     spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
   }
@@ -30,7 +33,10 @@ class Pokedex extends Component<any, PokedexState> {
     }
 
     pokemonDataPromise.then(function (data) {
-      console.log("in main class", data);
+      if(data == null)
+        return;
+      //console.log("in main class", data);
+      console.log(data.sprites);
     })
   };
 
