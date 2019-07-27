@@ -1,8 +1,6 @@
 import React from 'react';
 import './pokedex-image-panel.css';
 
-// replace the src with data from api
-
 type PokedexImagePanelProp = {
     spriteUrl: string | null
 }
