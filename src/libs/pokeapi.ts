@@ -18,7 +18,6 @@ export default class PokeApiService {
                 return data;
             })
             .catch(function (error) {
-                // handle error
                 console.log(error);
                 return null;
             });
