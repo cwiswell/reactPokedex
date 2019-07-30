@@ -1,5 +1,6 @@
 import ReferenceItem from "./referenceItem";
 import Genus from "./genus";
+import PokemonName from "./pokemonName";
 
 export default interface Species{
     base_happiness: number;
@@ -19,4 +20,10 @@ export default interface Species{
     habitat: ReferenceItem;
 
     has_gender_differences: boolean;
+    hatch_counter: number;
+    is_baby: boolean;
+    name: string;
+    names: Array<PokemonName>;
+    order: number;
+    shape: ReferenceItem;
 }
