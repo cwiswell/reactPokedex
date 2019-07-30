@@ -11,9 +11,9 @@ export default class PokeApiService {
             return null;
         }
 
-        return axios.get(`${apiPrefix}/pokemon/${name}`)
+        return axios.get<Pokemon>(`${apiPrefix}/pokemon/${name}`)
             .then(function (response) {
-                let data: Pokemon = response.data;
+                let data = response.data;
 
                 return data;
             })
