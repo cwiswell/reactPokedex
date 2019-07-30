@@ -8,4 +8,5 @@ export default interface Pokemon {
     name: string | null;
     sprites: SpriteUrl;
     forms: Array<ReferenceItem>;
+    species: ReferenceItem;
 }
