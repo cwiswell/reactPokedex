@@ -7,6 +7,7 @@ type PokedexMainPanelProp = {
     spriteUrl: string | null;
     changeFunction: (event: React.ChangeEvent<HTMLInputElement>) => void;
     searchFunction: () => void;
+    errorText: string | null;
 }
 
 const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
@@ -19,7 +20,7 @@ const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
     return (
         <div className="mainPanelBackground">
             <div className="mainPanel">
-                <PokedexImagePanel spriteUrl={props.spriteUrl} />
+                <PokedexImagePanel spriteUrl={props.spriteUrl} errorText={props.errorText} />
                 <div className="bottomLeftContainer">
                     <div className="leftBlackButton"></div>
                     <div className="midButton redMidBtn"></div>

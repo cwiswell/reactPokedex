@@ -8,12 +8,14 @@ import Pokemon from './interfaces/pokemon';
 type PokedexState = {
   pokemon: Pokemon | null;
   searchString: string | null;
+  errorText: string | null;
 }
 
 class Pokedex extends Component<any, PokedexState> {
   state: PokedexState = {
     pokemon: null,
-    searchString: null
+    searchString: null,
+    errorText: null
   }
   pokeapi: PokeApiService = new PokeApiService();
 
@@ -31,9 +33,12 @@ class Pokedex extends Component<any, PokedexState> {
     let currentScope = this;
 
     pokemonDataPromise.then(function (data) {
-      if (data == null) { return; }
+      if (data == null) { 
+        currentScope.setState({pokemon: null, errorText: `Pokemon ${currentScope.state.searchString} not found.`});
+        return; 
+      }
 
-      currentScope.setState({ pokemon: data });
+      currentScope.setState({ pokemon: data, errorText: null });
     })
   };
 
@@ -51,7 +56,8 @@ class Pokedex extends Component<any, PokedexState> {
           <div className="light greenLight"></div>
           <PokedexMainPanel spriteUrl={currentPokemon == null ? null : currentPokemon.sprites.front_default} 
                             changeFunction={this.onInputChange} 
-                            searchFunction={this.searchPokemon} />
+                            searchFunction={this.searchPokemon} 
+                            errorText={this.state.errorText} />
         </div>
         <PokedexSidePanel name={currentPokemon == null ? null : currentPokemon.name}
                           weight={currentPokemon == null ? null : currentPokemon.weight} 

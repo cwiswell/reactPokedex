@@ -2,11 +2,12 @@ import React from 'react';
 import './pokedex-image-panel.css';
 
 type PokedexImagePanelProp = {
-    spriteUrl: string | null
+    spriteUrl: string | null;
+    errorText: string | null;
 }
 
 const PokedexImagePanel: React.FC<PokedexImagePanelProp> = (props) => {
-    let imgArea = props.spriteUrl == null ? null : (<img src={props.spriteUrl} alt="pokemon sprite" width="100%" />)
+    let imgArea = props.spriteUrl == null ? props.errorText : (<img src={props.spriteUrl} alt="pokemon sprite" width="100%" />)
 
     return (
             <div className="backgroundImagePanelBorder">
@@ -23,7 +24,7 @@ const PokedexImagePanel: React.FC<PokedexImagePanelProp> = (props) => {
                     </div>
                 </div>
             </div>
-    )
+    );
 }
 
 export default PokedexImagePanel;
