@@ -4,18 +4,21 @@ import PokedexMainPanel from './pokedex-main-panel/pokedex-main-panel';
 import PokedexSidePanel from './pokedex-side-panel/pokedex-side-panel';
 import PokeApiService from './libs/pokeapi';
 import Pokemon from './interfaces/pokemon';
+import ReferenceItem from './interfaces/referenceItem';
 
 type PokedexState = {
   pokemon: Pokemon | null;
   searchString: string | null;
   errorText: string | null;
+  language: string;
 }
 
 class Pokedex extends Component<any, PokedexState> {
   state: PokedexState = {
     pokemon: null,
     searchString: null,
-    errorText: null
+    errorText: null,
+    language: 'en'
   }
   pokeapi: PokeApiService = new PokeApiService();
 
@@ -42,9 +45,23 @@ class Pokedex extends Component<any, PokedexState> {
     })
   };
 
+  isLanguage = (element: any, index: number, array: Array<any>) => {
+     let lang: ReferenceItem = element.language;
+
+     return lang.name === this.state.language;
+  }
+
   render() {
     let currentPokemon = this.state.pokemon;
+    let description: string | null = "";
     
+    if(currentPokemon !== null && currentPokemon.speciesData !== null){
+      let flavorText = currentPokemon.speciesData.flavor_text_entries;
+      let filteredFlavorText = flavorText.filter(this.isLanguage);
+      
+      description = filteredFlavorText[0].flavor_text;
+    }
+
     return (
       <div className="background">
         <div className="mainPokedex">
@@ -62,7 +79,8 @@ class Pokedex extends Component<any, PokedexState> {
         <PokedexSidePanel name={currentPokemon == null ? null : currentPokemon.name}
                           weight={currentPokemon == null ? null : currentPokemon.weight} 
                           height={currentPokemon == null ? null : currentPokemon.height} 
-                          pokemonNumber={currentPokemon == null ? null : currentPokemon.id} />
+                          pokemonNumber={currentPokemon == null ? null : currentPokemon.id}
+                          description={description} />
       </div>
     );
   };
