@@ -5,6 +5,7 @@ import PokedexSidePanel from './pokedex-side-panel/pokedex-side-panel';
 import PokeApiService from './libs/pokeapi';
 import Pokemon from './interfaces/pokemon';
 import ReferenceItem from './interfaces/referenceItem';
+import FlavorText from './interfaces/flavorText';
 
 type PokedexState = {
   pokemon: Pokemon | null;
@@ -53,13 +54,12 @@ class Pokedex extends Component<any, PokedexState> {
 
   render() {
     let currentPokemon = this.state.pokemon;
-    let description: string | null = "";
     
+    let filteredFlavorText: Array<FlavorText> = [];
+
     if(currentPokemon !== null && currentPokemon.speciesData !== null){
       let flavorText = currentPokemon.speciesData.flavor_text_entries;
-      let filteredFlavorText = flavorText.filter(this.isLanguage);
-      
-      description = filteredFlavorText[0].flavor_text;
+      filteredFlavorText = flavorText.filter(this.isLanguage);
     }
 
     return (
@@ -80,7 +80,7 @@ class Pokedex extends Component<any, PokedexState> {
                           weight={currentPokemon == null ? null : currentPokemon.weight} 
                           height={currentPokemon == null ? null : currentPokemon.height} 
                           pokemonNumber={currentPokemon == null ? null : currentPokemon.id}
-                          description={description} />
+                          flavorTexts={filteredFlavorText} />
       </div>
     );
   };
