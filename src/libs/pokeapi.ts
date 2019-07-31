@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Pokemon from '../interfaces/pokemon';
+import Species from '../interfaces/species';
 
 //const CACHE_PREFIX = "pokeapi-ts-wrapper-";
 const apiPrefix: string = 'https://pokeapi.co/api/v2';
@@ -10,12 +11,22 @@ export default class PokeApiService {
         if (name === null) {
             return null;
         }
-
+        let parent = this;
         return axios.get<Pokemon>(`${apiPrefix}/pokemon/${name}`)
             .then(function (response) {
                 let data = response.data;
+                let promiseArray: Array<Promise<any>> = [];
 
-                return data;
+                let speciesPromise = parent.getData<Species>(data.species.url);
+                promiseArray.push(speciesPromise);
+
+                speciesPromise.then(function(speciesData){
+                    data.speciesData = speciesData;
+                })
+
+                return axios.all(promiseArray).then(function(){
+                    return data;
+                })
             })
             .catch(function (error) {
                 console.log(error);
@@ -23,7 +34,7 @@ export default class PokeApiService {
             });
     }
 
-    getData = <T extends {}>(url: string): Promise<T> => {
+    getData = <T extends {}>(url: string): Promise<T | null>  => {
         return axios.get(url)
             .then(function (response) {
                 return response.data;

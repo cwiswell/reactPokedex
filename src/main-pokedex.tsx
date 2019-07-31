@@ -37,7 +37,7 @@ class Pokedex extends Component<any, PokedexState> {
         currentScope.setState({pokemon: null, errorText: `Pokemon ${currentScope.state.searchString} not found.`});
         return; 
       }
-
+      
       currentScope.setState({ pokemon: data, errorText: null });
     })
   };

@@ -12,6 +12,6 @@ export default interface Pokemon {
     forms: Array<ReferenceItem>;
     formsData: any;
     species: ReferenceItem;
-    speciesData: Species;
+    speciesData: Species | null;
     stats: Array<PokemonStat>;
 }
