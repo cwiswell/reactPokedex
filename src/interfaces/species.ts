@@ -1,6 +1,7 @@
 import ReferenceItem from "./referenceItem";
 import Genus from "./genus";
 import PokemonName from "./pokemonName";
+import FlavorText from "./flavorText";
 
 export default interface Species{
     base_happiness: number;
@@ -9,7 +10,7 @@ export default interface Species{
     egg_groups: Array<ReferenceItem>;
     evolution_chain: ReferenceItem;
     evolves_from_species: ReferenceItem;
-    flavor_text_entries: Array<any>;
+    flavor_text_entries: Array<FlavorText>;
     form_descriptions: Array<any>;
     forms_switchable: boolean;
     gender_rate: number;
