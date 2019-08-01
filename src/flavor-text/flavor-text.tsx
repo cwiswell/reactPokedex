@@ -3,6 +3,8 @@ import './flavor-text.css';
 import FlavorText from '../interfaces/flavorText';
 
 type FlavorTextState = {
+    gameName: string;
+    flavorText: string;
 }
 
 type FlavorTextProps = {
@@ -11,7 +13,19 @@ type FlavorTextProps = {
 
 class FlavorTextDisplay extends Component<FlavorTextProps, FlavorTextState> {
     state: FlavorTextState = {
-    }
+        gameName: "Unknown",
+        flavorText: "No information available."
+    };
+
+    static getDerivedStateFromProps(props: FlavorTextProps, current_state: FlavorTextState) {
+        if(props.flavorTexts === null || props.flavorTexts === undefined || props.flavorTexts.length === 0){
+            return  {
+                gameName: "Unknown",
+                flavorText: "No information available."
+            };
+        }
+        return null
+      }
 
     render() {
         let flavorText = "";

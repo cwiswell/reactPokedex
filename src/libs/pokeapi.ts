@@ -8,7 +8,7 @@ const apiPrefix: string = 'https://pokeapi.co/api/v2';
 export default class PokeApiService {
 
     getPokemon = (name: string | null): Promise<Pokemon | null> | null => {
-        if (name === null) {
+        if (name === null || name === "") {
             return null;
         }
         let parent = this;

@@ -31,6 +31,7 @@ class Pokedex extends Component<any, PokedexState> {
     let pokemonDataPromise = this.pokeapi.getPokemon(this.state.searchString);
 
     if (pokemonDataPromise === undefined || pokemonDataPromise === null) {
+      this.setState({ pokemon: null, errorText: null });
       return;
     }
 
