@@ -1,6 +1,7 @@
 import React from 'react';
 import './pokedex-side-panel.css';
 import FlavorText from '../interfaces/flavorText';
+import FlavorTextDisplay from '../flavor-text/flavor-text';
 
 type PokedexSidePanelProps = {
   name: string | null;
@@ -13,16 +14,6 @@ type PokedexSidePanelProps = {
 const PokedexSidePanel: React.FC<PokedexSidePanelProps> = (props) => {
   let height = props.height === null ? "N/A" : `${props.height} dm`;
   let weight = props.weight === null ? "N/A" : `${props.weight} hg`;
-  let flavorText = "";
-  let gameName = "";
-  if(props.flavorTexts === null || props.flavorTexts === undefined || props.flavorTexts.length === 0)
-  {
-    flavorText= "No information available.";
-    gameName="Unknown";
-  }else{
-    flavorText = props.flavorTexts[0].flavor_text;
-    gameName = props.flavorTexts[0].version.name;
-  }
 
   return (
     <div className="pokedexSidePanel">
@@ -34,14 +25,7 @@ const PokedexSidePanel: React.FC<PokedexSidePanelProps> = (props) => {
         <div>Weight:  {weight}</div>
         <br />
       </div>
-      <div className="flavorTextArea">
-        <div>
-          {gameName}
-        </div>
-        <div>
-          {flavorText}
-        </div>
-      </div>
+      <FlavorTextDisplay flavorTexts={props.flavorTexts} />
     </div>
   );
 

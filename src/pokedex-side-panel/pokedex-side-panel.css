@@ -20,18 +20,6 @@
   border-radius: 20px;
 }
 
-.flavorTextArea{
-  width: 340px;
-  height: 150px;
-  margin-top: 20px;
-  margin-left: 25px;
-  border: 1px black solid;
-  background-color: #242424;
-  color: rgb(199, 199, 199);
-  padding: 5px;
-  border-radius: 20px;
-}
-
 .nameDiv{
   text-transform: capitalize;
 }
