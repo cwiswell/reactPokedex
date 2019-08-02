@@ -18,14 +18,14 @@ class FlavorTextDisplay extends Component<FlavorTextProps, FlavorTextState> {
     };
 
     static getDerivedStateFromProps(props: FlavorTextProps, current_state: FlavorTextState) {
-        if(props.flavorTexts === null || props.flavorTexts === undefined || props.flavorTexts.length === 0){
-            return  {
+        if (props.flavorTexts === null || props.flavorTexts === undefined || props.flavorTexts.length === 0) {
+            return {
                 gameName: "Unknown",
                 flavorText: "No information available."
             };
         }
         return null
-      }
+    }
 
     render() {
         let flavorText = "";
@@ -41,8 +41,9 @@ class FlavorTextDisplay extends Component<FlavorTextProps, FlavorTextState> {
         return (
             <div className="flavorTextArea">
                 <div>
-                    {gameName}
+                    Game: {gameName}
                 </div>
+                <br />
                 <div>
                     {flavorText}
                 </div>
