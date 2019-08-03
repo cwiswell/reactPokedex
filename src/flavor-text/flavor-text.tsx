@@ -33,6 +33,7 @@ class FlavorTextDisplay extends Component<FlavorTextProps, FlavorTextState> {
                 currentIndex: 0
             };
         }
+        return null;
     }
     
     nextText = () =>{
