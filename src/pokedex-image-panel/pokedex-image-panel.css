@@ -25,6 +25,8 @@
 
 .spritePanel{
     background-color: #adff88;
+    text-align: center;
+    font-weight: bold;
     float:left;
     width: 260px;
     height: 240px;
