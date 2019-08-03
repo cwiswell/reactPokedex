@@ -9,4 +9,9 @@
     padding: 5px;
     border-radius: 20px;
   }
+
+  .gameText{
+    text-transform: capitalize;
+    font-size: large;    
+  }
   
