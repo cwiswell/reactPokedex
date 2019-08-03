@@ -72,7 +72,7 @@ class Pokedex extends Component<any, PokedexState> {
           <div className="light redLight"></div>
           <div className="light yellowLight"></div>
           <div className="light greenLight"></div>
-          <PokedexMainPanel spriteUrl={currentPokemon == null ? null : currentPokemon.sprites.front_default} 
+          <PokedexMainPanel sprites={currentPokemon == null ? null : currentPokemon.sprites} 
                             changeFunction={this.onInputChange} 
                             searchFunction={this.searchPokemon} 
                             errorText={this.state.errorText} />

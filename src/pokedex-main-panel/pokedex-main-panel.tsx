@@ -2,9 +2,10 @@ import React from 'react';
 import './pokedex-main-panel.css';
 
 import PokedexImagePanel from '../pokedex-image-panel/pokedex-image-panel';
+import SpriteUrl from '../interfaces/spriteUrls';
 
 type PokedexMainPanelProp = {
-    spriteUrl: string | null;
+    sprites: SpriteUrl | null;
     changeFunction: (event: React.ChangeEvent<HTMLInputElement>) => void;
     searchFunction: () => void;
     errorText: string | null;
@@ -20,7 +21,7 @@ const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
     return (
         <div className="mainPanelBackground">
             <div className="mainPanel">
-                <PokedexImagePanel spriteUrl={props.spriteUrl} errorText={props.errorText} />
+                <PokedexImagePanel spriteUrl={props.sprites} errorText={props.errorText} />
                 <div className="bottomLeftContainer">
                     <div className="leftBlackButton"></div>
                     <div className="midButton redMidBtn"></div>
