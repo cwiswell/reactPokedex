@@ -25,11 +25,13 @@ type PokedexImagePanelProp = {
 
 type PokedexImagePanelState = {
     currentIndex: Sprite | null;
+    currentSpriteUrl: SpriteUrl | null;
 }
 
 class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePanelState>{
     state: PokedexImagePanelState = {
-        currentIndex: null
+        currentIndex: null,
+        currentSpriteUrl: null
     };
 
     changeIndex = () => {
@@ -54,7 +56,7 @@ class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePan
         while (count < spriteList.length) {
             index++;
             count++;
-            
+
             if(index >= spriteList.length){
                 index = 0;
             }
@@ -70,11 +72,13 @@ class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePan
     static getDerivedStateFromProps(props: PokedexImagePanelProp, current_state: PokedexImagePanelState): PokedexImagePanelState | null {
         if (props.spriteUrl === null) {
             return {
-                currentIndex: null
+                currentIndex: null,
+                currentSpriteUrl: null
             };
-        } else if (current_state.currentIndex === null) {
+        } else if (current_state.currentIndex === null || current_state.currentSpriteUrl !== props.spriteUrl) {
             return {
-                currentIndex: spriteList[0]
+                currentIndex: spriteList[0],
+                currentSpriteUrl: props.spriteUrl
             };
         }
         return null;
