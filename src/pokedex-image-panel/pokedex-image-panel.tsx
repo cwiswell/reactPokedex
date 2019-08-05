@@ -37,7 +37,16 @@ class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePan
         if(currIndex === null){
             return;
         }
-        console.log()
+        
+        let spriteIndex = this.state.currentIndex;
+        if(spriteIndex === null){
+            console.log("sprite index is null")
+            return;
+        }
+        let index = spriteList.indexOf(spriteIndex);
+        console.log(index);
+
+        //console.log("current index", this.state.currentIndex);
     }
 
     static getDerivedStateFromProps(props: PokedexImagePanelProp, current_state: PokedexImagePanelState) : PokedexImagePanelState | null {
@@ -46,7 +55,6 @@ class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePan
                 currentIndex: null
             };
         }else if(current_state.currentIndex === null){
-            console.log("initialize state");
             return {
                 currentIndex: spriteList[0]
             };
@@ -54,20 +62,28 @@ class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePan
         return null;
     };
 
-    render() {
-        let imgArea = (<Fragment>{this.props.errorText}</Fragment>);
-        let hasImage = false;
-
-        let tempSpriteUrl: SpriteUrl = this.props.spriteUrl == null ? {} as SpriteUrl : this.props.spriteUrl;
-        if (tempSpriteUrl !== null || tempSpriteUrl !== undefined) {
-            let currentUrl = tempSpriteUrl["front_default"];
-            if (currentUrl != null) {
-                imgArea = (<img src={currentUrl} alt="pokemon sprite" width="90%" />);
-                hasImage = true;
-            }
+    renderImage = () =>{
+        let spriteObj = this.props.spriteUrl;
+        if(spriteObj === null || spriteObj === undefined){
+            return (<Fragment>{this.props.errorText}</Fragment>);
         }
 
-        let spriteName = hasImage ? "Front Default" : "";
+        let currentSpriteIndex = this.state.currentIndex;
+        if(currentSpriteIndex === null){
+            return;
+        }
+        let currentUrl: string = "";
+
+        if(spriteObj.hasOwnProperty(currentSpriteIndex.index)){
+            currentUrl = spriteObj[currentSpriteIndex.index] as string;
+        }
+        return (<img src={currentUrl} alt="pokemon sprite" width="90%" />)
+    }
+
+    render() {
+        let imgArea = this.renderImage();
+        
+        let spriteName = this.state.currentIndex === null ? "" : this.state.currentIndex.name;
 
         return (
             <div className="backgroundImagePanelBorder">

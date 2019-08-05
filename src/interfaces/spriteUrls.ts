@@ -1,4 +1,5 @@
 export default interface SpriteUrl {
+    [key: string]: string | null;
     back_default: string | null;
     back_female: string | null;
     back_shiny: string | null;
