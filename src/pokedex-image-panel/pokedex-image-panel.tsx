@@ -28,33 +28,51 @@ type PokedexImagePanelState = {
 }
 
 class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePanelState>{
-    state: PokedexImagePanelState ={
+    state: PokedexImagePanelState = {
         currentIndex: null
     };
-    
-    changeIndex = () =>{
+
+    changeIndex = () => {
         let currIndex = this.state.currentIndex;
-        if(currIndex === null){
+        if (currIndex === null) {
             return;
         }
-        
+
         let spriteIndex = this.state.currentIndex;
-        if(spriteIndex === null){
+        if (spriteIndex === null) {
             console.log("sprite index is null")
             return;
         }
-        let index = spriteList.indexOf(spriteIndex);
-        console.log(index);
+        
+        let spriteObj = this.props.spriteUrl;
+        if(spriteObj === null || spriteObj === undefined){
+            return;
+        }
 
-        //console.log("current index", this.state.currentIndex);
+        let index = spriteList.indexOf(spriteIndex);
+        let count = 0;
+        while (count < spriteList.length) {
+            index++;
+            count++;
+            
+            if(index >= spriteList.length){
+                index = 0;
+            }
+            let spriteIndex = spriteList[index];
+
+            if (spriteObj.hasOwnProperty(spriteIndex.index) && spriteObj[spriteIndex.index] !== null) {
+                break;
+            }
+        }
+        this.setState({currentIndex: spriteList[index]});
     }
 
-    static getDerivedStateFromProps(props: PokedexImagePanelProp, current_state: PokedexImagePanelState) : PokedexImagePanelState | null {
+    static getDerivedStateFromProps(props: PokedexImagePanelProp, current_state: PokedexImagePanelState): PokedexImagePanelState | null {
         if (props.spriteUrl === null) {
             return {
                 currentIndex: null
             };
-        }else if(current_state.currentIndex === null){
+        } else if (current_state.currentIndex === null) {
             return {
                 currentIndex: spriteList[0]
             };
@@ -62,19 +80,19 @@ class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePan
         return null;
     };
 
-    renderImage = () =>{
+    renderImage = () => {
         let spriteObj = this.props.spriteUrl;
-        if(spriteObj === null || spriteObj === undefined){
+        if (spriteObj === null || spriteObj === undefined) {
             return (<Fragment>{this.props.errorText}</Fragment>);
         }
 
         let currentSpriteIndex = this.state.currentIndex;
-        if(currentSpriteIndex === null){
+        if (currentSpriteIndex === null) {
             return;
         }
         let currentUrl: string = "";
 
-        if(spriteObj.hasOwnProperty(currentSpriteIndex.index)){
+        if (spriteObj.hasOwnProperty(currentSpriteIndex.index)) {
             currentUrl = spriteObj[currentSpriteIndex.index] as string;
         }
         return (<img src={currentUrl} alt="pokemon sprite" width="90%" />)
@@ -82,7 +100,7 @@ class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePan
 
     render() {
         let imgArea = this.renderImage();
-        
+
         let spriteName = this.state.currentIndex === null ? "" : this.state.currentIndex.name;
 
         return (
