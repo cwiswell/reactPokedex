@@ -26,7 +26,7 @@ class FlavorTextDisplay extends Component<FlavorTextProps, FlavorTextState> {
                 flavorText: "No information available.",
                 currentIndex: -1
             };
-        }else if(current_state.currentIndex === -1){ 
+        }else if(current_state.currentIndex === -1 || !props.flavorTexts.some(item=> item.flavor_text === current_state.flavorText)){ 
             return {
                 gameName: props.flavorTexts[0].version.name,
                 flavorText: props.flavorTexts[0].flavor_text,
