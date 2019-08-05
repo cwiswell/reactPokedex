@@ -12,6 +12,7 @@ type PokedexState = {
   searchString: string | null;
   errorText: string | null;
   language: string;
+  previousSearchString: string | null;
 }
 
 class Pokedex extends Component<any, PokedexState> {
@@ -19,7 +20,8 @@ class Pokedex extends Component<any, PokedexState> {
     pokemon: null,
     searchString: null,
     errorText: null,
-    language: 'en'
+    language: 'en',
+    previousSearchString: null
   }
   pokeapi: PokeApiService = new PokeApiService();
 
@@ -28,6 +30,10 @@ class Pokedex extends Component<any, PokedexState> {
   };
 
   searchPokemon = () => {
+    let prevSearch = this.state.previousSearchString;
+    if(prevSearch !== null && this.state.searchString === prevSearch){
+      return;
+    }
     
     let pokemonDataPromise = this.pokeapi.getPokemon(this.state.searchString);
 
@@ -44,7 +50,7 @@ class Pokedex extends Component<any, PokedexState> {
         return; 
       }
       
-      currentScope.setState({ pokemon: data, errorText: null });
+      currentScope.setState({ pokemon: data, errorText: null, previousSearchString: currentScope.state.searchString });
     })
   };
 
