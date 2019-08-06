@@ -99,7 +99,8 @@ class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePan
         if (spriteObj.hasOwnProperty(currentSpriteIndex.index)) {
             currentUrl = spriteObj[currentSpriteIndex.index] as string;
         }
-        return (<img src={currentUrl} alt="pokemon sprite" width="90%" />)
+        return (<Fragment><img src={currentUrl} alt="pokemon sprite" width="90%" />
+        <div className="spriteBtn"></div></Fragment>);
     }
 
     render() {
@@ -115,7 +116,6 @@ class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePan
                     <div className="spritePanel">
                         {spriteName}
                         {imgArea}
-                        <div className="spriteBtn"></div>
                     </div>
                     <div className="imagePanelBottomLight"></div>
                     <div className="lineContainer">
