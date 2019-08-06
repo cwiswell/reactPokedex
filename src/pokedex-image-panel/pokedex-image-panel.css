@@ -35,6 +35,18 @@
     border-radius: 5px;
 }
 
+.spriteBtn{
+    height: 20px;
+    width: 10px;
+    float: right;
+    background-color: #c9c9c9;
+    opacity: .5;
+    margin-top: 110px;
+    margin-right: 5px;    
+    clip-path: 
+     polygon(0 0, 100% 50%, 0 100%);
+}
+
 .leftLight{
     margin-left:135px;
 }

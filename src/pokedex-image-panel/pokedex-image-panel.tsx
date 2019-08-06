@@ -115,6 +115,7 @@ class PokedexImagePanel extends Component<PokedexImagePanelProp, PokedexImagePan
                     <div className="spritePanel">
                         {spriteName}
                         {imgArea}
+                        <div className="spriteBtn"></div>
                     </div>
                     <div className="imagePanelBottomLight"></div>
                     <div className="lineContainer">
