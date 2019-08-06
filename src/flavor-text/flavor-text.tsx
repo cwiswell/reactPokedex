@@ -59,6 +59,7 @@ class FlavorTextDisplay extends Component<FlavorTextProps, FlavorTextState> {
     render() {
         return (
             <div className="flavorTextArea" onClick={this.nextText}>
+            <div className="flavorTextButton"></div>
                 <div className="gameText">
                     Game: {this.state.gameName}
                 </div>
