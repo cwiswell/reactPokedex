@@ -7,9 +7,9 @@ type FlavorTextProps = {
 }
 
 const FlavorTextDisplay: React.FC<FlavorTextProps> = (props) => {
-    const [gameName, setGameName] = useState("Unknown");
-    const [flavorText, setFlavorText] = useState("No information available.");
-    const [currentIndex, setCurrentIndex] = useState(-1);
+    const [gameName, setGameName] = useState<string>("Unknown");
+    const [flavorText, setFlavorText] = useState<string>("No information available.");
+    const [currentIndex, setCurrentIndex] = useState<number>(-1);
 
     if (props.flavorTexts.length === 0 && currentIndex !== -1) {        
         setGameName("Unknown");
