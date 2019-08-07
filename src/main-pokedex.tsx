@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './main-pokedex.css';
 import PokedexMainPanel from './pokedex-main-panel/pokedex-main-panel';
 import PokedexSidePanel from './pokedex-side-panel/pokedex-side-panel';
@@ -7,91 +7,76 @@ import Pokemon from './interfaces/pokemon';
 import ReferenceItem from './interfaces/referenceItem';
 import FlavorText from './interfaces/flavorText';
 
-type PokedexState = {
-  pokemon: Pokemon | null;
-  searchString: string | null;
-  errorText: string | null;
-  language: string;
-  previousSearchString: string | null;
-}
+const Pokedex: React.FC<any> = () => {
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  const [searchString, setSearchString] = useState<string | null>(null);
+  const [errorText, setErrorText] = useState<string | null>(null);
+  const language = 'en';
+  //const [language, setLanguage] = useState<string>('en');
+  const [previousSearchString, setpreviousSearchString] = useState<string | null>(null);
 
-class Pokedex extends Component<any, PokedexState> {
-  state: PokedexState = {
-    pokemon: null,
-    searchString: null,
-    errorText: null,
-    language: 'en',
-    previousSearchString: null
-  }
-  pokeapi: PokeApiService = new PokeApiService();
+  const pokeapi: PokeApiService = new PokeApiService();
 
-  onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ searchString: e.target.value });
-  };
-
-  searchPokemon = () => {
-    let prevSearch = this.state.previousSearchString;
-    if(prevSearch !== null && this.state.searchString === prevSearch){
+  const searchPokemon = () => {
+    if (previousSearchString !== null && searchString === previousSearchString) {
       return;
     }
-    
-    let pokemonDataPromise = this.pokeapi.getPokemon(this.state.searchString);
+
+    let pokemonDataPromise = pokeapi.getPokemon(searchString);
 
     if (pokemonDataPromise === undefined || pokemonDataPromise === null) {
-      this.setState({ pokemon: null, errorText: null });
+      setPokemon(null);
+      setErrorText(null);
       return;
     }
 
-    let currentScope = this;
-
     pokemonDataPromise.then(function (data) {
-      if (data == null) { 
-        currentScope.setState({pokemon: null, errorText: `Pokemon ${currentScope.state.searchString} not found.`});
-        return; 
+      if (data == null) {
+        setPokemon(null);
+        setErrorText(`Pokemon ${searchString} not found.`);
+        return;
       }
-      
-      currentScope.setState({ pokemon: data, errorText: null, previousSearchString: currentScope.state.searchString });
+      setPokemon(data);
+      setErrorText(null);
+      setpreviousSearchString(searchString);
     })
   };
 
-  isLanguage = (element: any, index: number, array: Array<any>) => {
-     let lang: ReferenceItem = element.language;
+  const isLanguage = (element: any, index: number, array: Array<any>) => {
+    let lang: ReferenceItem = element.language;
 
-     return lang.name === this.state.language;
+    return lang.name === language;
   }
 
-  render() {
-    let currentPokemon = this.state.pokemon;
-    
-    let filteredFlavorText: Array<FlavorText> = [];
 
-    if(currentPokemon !== null && currentPokemon.speciesData !== null){
-      let flavorText = currentPokemon.speciesData.flavor_text_entries;
-      filteredFlavorText = flavorText.filter(this.isLanguage);
-    }
+  let filteredFlavorText: Array<FlavorText> = [];
 
-    return (
-      <div className="background">
-        <div className="mainPokedex">
-          <div className="cameraRing">
-            <div className="cameraLens"></div>
-          </div>
-          <div className="light redLight"></div>
-          <div className="light yellowLight"></div>
-          <div className="light greenLight"></div>
-          <PokedexMainPanel sprites={currentPokemon == null ? null : currentPokemon.sprites} 
-                            changeFunction={this.onInputChange} 
-                            searchFunction={this.searchPokemon} 
-                            errorText={this.state.errorText} />
+  if (pokemon !== null && pokemon.speciesData !== null) {
+    let flavorText = pokemon.speciesData.flavor_text_entries;
+    filteredFlavorText = flavorText.filter(isLanguage);
+  }
+
+  return (
+    <div className="background">
+      <div className="mainPokedex">
+        <div className="cameraRing">
+          <div className="cameraLens"></div>
         </div>
-        <PokedexSidePanel name={currentPokemon == null ? null : currentPokemon.name}
-                          weight={currentPokemon == null ? null : currentPokemon.weight} 
-                          height={currentPokemon == null ? null : currentPokemon.height} 
-                          pokemonNumber={currentPokemon == null ? null : currentPokemon.id}
-                          flavorTexts={filteredFlavorText} />
+        <div className="light redLight"></div>
+        <div className="light yellowLight"></div>
+        <div className="light greenLight"></div>
+        <PokedexMainPanel sprites={pokemon == null ? null : pokemon.sprites}
+          changeFunction={e => setSearchString(e.target.value)}
+          searchFunction={searchPokemon}
+          errorText={errorText} />
       </div>
-    );
-  };
+      <PokedexSidePanel name={pokemon == null ? null : pokemon.name}
+        weight={pokemon == null ? null : pokemon.weight}
+        height={pokemon == null ? null : pokemon.height}
+        pokemonNumber={pokemon == null ? null : pokemon.id}
+        flavorTexts={filteredFlavorText} />
+    </div>
+  );
 }
 
 export default Pokedex;

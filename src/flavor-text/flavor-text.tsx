@@ -1,75 +1,58 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './flavor-text.css';
 import FlavorText from '../interfaces/flavorText';
-
-type FlavorTextState = {
-    gameName: string;
-    flavorText: string;
-    currentIndex: number;
-}
 
 type FlavorTextProps = {
     flavorTexts: Array<FlavorText>;
 }
 
-class FlavorTextDisplay extends Component<FlavorTextProps, FlavorTextState> {
-    state: FlavorTextState = {
-        gameName: "Unknown",
-        flavorText: "No information available.",
-        currentIndex: -1,
-    };
+const FlavorTextDisplay: React.FC<FlavorTextProps> = (props) => {
+    const [gameName, setGameName] = useState("Unknown");
+    const [flavorText, setFlavorText] = useState("No information available.");
+    const [currentIndex, setCurrentIndex] = useState(-1);
 
-    static getDerivedStateFromProps(props: FlavorTextProps, current_state: FlavorTextState) {
-        if (props.flavorTexts.length === 0) {
-            return {
-                gameName: "Unknown",
-                flavorText: "No information available.",
-                currentIndex: -1
-            };
-        }else if(current_state.currentIndex === -1 || !props.flavorTexts.some(item=> item.flavor_text === current_state.flavorText)){ 
-            return {
-                gameName: props.flavorTexts[0].version.name,
-                flavorText: props.flavorTexts[0].flavor_text,
-                currentIndex: 0
-            };
-        }
-        return null;
+    if (props.flavorTexts.length === 0 && currentIndex !== -1) {        
+        setGameName("Unknown");
+        setFlavorText("No information available.");
+        setCurrentIndex(-1);
+    } else if (props.flavorTexts.length > 0 && (currentIndex === -1 || !props.flavorTexts.some(item => item.flavor_text === flavorText))) {
+        
+        setGameName(props.flavorTexts[0].version.name);
+        setFlavorText(props.flavorTexts[0].flavor_text);
+        setCurrentIndex(0);
     }
-    
-    nextText = () =>{
-        let nextIndex = this.state.currentIndex + 1;
 
-        if(nextIndex === this.props.flavorTexts.length){
+    const nextText = () => {
+        let nextIndex = currentIndex + 1;
+
+        if (nextIndex === props.flavorTexts.length) {
             nextIndex = 0;
         }
 
-        let nextFlavorText = this.props.flavorTexts[nextIndex];
+        let nextFlavorText = props.flavorTexts[nextIndex];
 
-        if(nextFlavorText === null || nextFlavorText === undefined){
+        if (nextFlavorText === null || nextFlavorText === undefined) {
             return;
         }
-        
-        this.setState({
-            gameName: nextFlavorText.version.name,
-            flavorText: nextFlavorText.flavor_text,
-            currentIndex: nextIndex
-        });
+
+        setGameName(nextFlavorText.version.name);
+        setFlavorText(nextFlavorText.flavor_text);
+        setCurrentIndex(nextIndex);
     }
 
-    render() {
-        return (
-            <div className="flavorTextArea" onClick={this.nextText}>
+    return (
+        <div className="flavorTextArea" onClick={nextText}>
             <div className="flavorTextButton"></div>
-                <div className="gameText">
-                    Game: {this.state.gameName}
-                </div>
-                <br />
-                <div>
-                    {this.state.flavorText}
-                </div>
+            <div className="gameText">
+                Game: {gameName}
             </div>
-        );
-    }
+            <br />
+            <div>
+                {flavorText}
+            </div>
+        </div>
+    );
+
 }
 
 export default FlavorTextDisplay;
