@@ -38,7 +38,7 @@ const FlavorTextDisplay: React.FC<FlavorTextProps> = (props) => {
         setGameName(nextFlavorText.version.name);
         setFlavorText(nextFlavorText.flavor_text);
         setCurrentIndex(nextIndex);
-    }
+    };
 
     return (
         <div className="flavorTextArea" onClick={nextText}>

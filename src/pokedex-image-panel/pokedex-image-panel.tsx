@@ -60,7 +60,7 @@ const PokedexImagePanel: React.FC<PokedexImagePanelProp> = (props) => {
             }
         }
         setCurrentIndex(spriteList[index]);
-    }
+    };
 
     const renderImage = () => {
         let spriteObj = props.spriteUrl;
@@ -79,12 +79,12 @@ const PokedexImagePanel: React.FC<PokedexImagePanelProp> = (props) => {
         }
         return (<Fragment><img src={currentUrl} alt="pokemon sprite" width="90%" />
             <div className="spriteBtn"></div></Fragment>);
-    }
+    };
 
     if (props.spriteUrl === null && currentSpriteUrl !== null) {
         setCurrentIndex(null);
         setCurrentSpriteUrl(null);
-    } else if (currentIndex === null || currentSpriteUrl !== props.spriteUrl) {
+    } else if (props.spriteUrl !== null && (currentIndex === null || currentSpriteUrl !== props.spriteUrl)) {
         setCurrentIndex(spriteList[0]);
         setCurrentSpriteUrl(props.spriteUrl);
     }

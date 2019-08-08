@@ -46,7 +46,7 @@ const Pokedex: React.FC<any> = () => {
     let lang: ReferenceItem = element.language;
 
     return lang.name === language;
-  }
+  };
 
 
   let filteredFlavorText: Array<FlavorText> = [];
