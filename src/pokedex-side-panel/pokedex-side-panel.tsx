@@ -16,6 +16,12 @@ type PokedexSidePanelProps = {
 const PokedexSidePanel: React.FC<PokedexSidePanelProps> = (props) => {
   let height = props.height === null ? "N/A" : `${props.height} dm`;
   let weight = props.weight === null ? "N/A" : `${props.weight} hg`;
+  let types = "N/A" ;
+
+  if(props.types !== null && props.types.length > 0){
+    let arrayOfTypes = props.types.map((item) => item.type.name);
+    types = arrayOfTypes.join("\\");
+  }
 
   return (
     <div className="pokedexSidePanel">
@@ -25,7 +31,8 @@ const PokedexSidePanel: React.FC<PokedexSidePanelProps> = (props) => {
         <div>Height:  {height}</div>
 
         <div>Weight:  {weight}</div>
-        <br />
+        
+        <div className="typeDiv">Type: {types}</div>
       </div>
       <FlavorTextDisplay flavorTexts={props.flavorTexts} />
     </div>

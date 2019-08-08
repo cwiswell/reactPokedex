@@ -23,3 +23,8 @@
 .nameDiv{
   text-transform: capitalize;
 }
+
+.typeDiv{
+  margin-top: 25px;
+  text-transform: capitalize;
+}
