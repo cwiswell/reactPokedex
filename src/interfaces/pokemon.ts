@@ -2,6 +2,7 @@ import SpriteUrl from "./spriteUrls";
 import ReferenceItem from "./referenceItem";
 import PokemonStat from "./pokemonStat";
 import Species from "./species";
+import PokemonType from "./pokemonType";
 
 export default interface Pokemon {
     weight: number | null;
@@ -14,4 +15,5 @@ export default interface Pokemon {
     species: ReferenceItem;
     speciesData: Species | null;
     stats: Array<PokemonStat>;
+    types: Array<PokemonType>;
 }

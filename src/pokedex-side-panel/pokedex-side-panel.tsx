@@ -2,6 +2,7 @@ import React from 'react';
 import './pokedex-side-panel.css';
 import FlavorText from '../interfaces/flavorText';
 import FlavorTextDisplay from '../flavor-text/flavor-text';
+import PokemonType from '../interfaces/pokemonType';
 
 type PokedexSidePanelProps = {
   name: string | null;
@@ -9,6 +10,7 @@ type PokedexSidePanelProps = {
   weight: number | null;
   pokemonNumber: number | null;
   flavorTexts: Array<FlavorText>;
+  types: Array<PokemonType> | null;
 }
 
 const PokedexSidePanel: React.FC<PokedexSidePanelProps> = (props) => {

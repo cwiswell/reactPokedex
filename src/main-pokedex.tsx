@@ -65,16 +65,17 @@ const Pokedex: React.FC<any> = () => {
         <div className="light redLight"></div>
         <div className="light yellowLight"></div>
         <div className="light greenLight"></div>
-        <PokedexMainPanel sprites={pokemon == null ? null : pokemon.sprites}
+        <PokedexMainPanel sprites={pokemon === null ? null : pokemon.sprites}
           changeFunction={e => setSearchString(e.target.value)}
           searchFunction={searchPokemon}
           errorText={errorText} />
       </div>
-      <PokedexSidePanel name={pokemon == null ? null : pokemon.name}
-        weight={pokemon == null ? null : pokemon.weight}
-        height={pokemon == null ? null : pokemon.height}
-        pokemonNumber={pokemon == null ? null : pokemon.id}
-        flavorTexts={filteredFlavorText} />
+      <PokedexSidePanel name={pokemon === null ? null : pokemon.name}
+        weight={pokemon === null ? null : pokemon.weight}
+        height={pokemon === null ? null : pokemon.height}
+        pokemonNumber={pokemon === null ? null : pokemon.id}
+        flavorTexts={filteredFlavorText} 
+        types={pokemon === null ? null : pokemon.types} />
     </div>
   );
 }
