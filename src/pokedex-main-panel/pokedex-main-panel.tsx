@@ -12,11 +12,11 @@ type PokedexMainPanelProp = {
 }
 
 const PokedexMainPanel: React.FC<PokedexMainPanelProp> = (props) => {
-    let keyUpFunction = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const keyUpFunction = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             props.searchFunction();
         }
-    }
+    };
 
     return (
         <div className="mainPanelBackground">
