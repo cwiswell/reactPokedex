@@ -23,6 +23,13 @@ const PokedexSidePanel: React.FC<PokedexSidePanelProps> = (props) => {
     types = arrayOfTypes.join("\\");
   }
 
+  let flavorTexts = props.flavorTexts.map((item) => {
+    let flavorText = item;
+    flavorText.flavor_text = item.flavor_text.replace(/\n/g, ' ')
+    
+    return flavorText;
+  });
+
   return (
     <div className="pokedexSidePanel">
       <div className="descriptionArea">
@@ -34,7 +41,7 @@ const PokedexSidePanel: React.FC<PokedexSidePanelProps> = (props) => {
         
         <div className="typeDiv">Type: {types}</div>
       </div>
-      <FlavorTextDisplay flavorTexts={props.flavorTexts} />
+      <FlavorTextDisplay flavorTexts={flavorTexts} />
     </div>
   );
 

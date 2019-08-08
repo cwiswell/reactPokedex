@@ -1,19 +1,19 @@
 .flavorTextArea{
-    width: 340px;
-    height: 200px;
-    margin-top: 20px;
-    margin-left: 25px;
-    border: 1px black solid;
-    background-color: #242424;
-    color: rgb(199, 199, 199);
-    padding: 5px;
-    border-radius: 20px;
-  }
+  width: 340px;
+  height: 200px;
+  margin-top: 20px;
+  margin-left: 25px;
+  border: 1px black solid;
+  background-color: #242424;
+  color: rgb(199, 199, 199);
+  padding: 5px;
+  border-radius: 20px;
+}
 
-  .gameText{
-    text-transform: capitalize;
-    font-size: large;    
-  }
+.gameText{
+  text-transform: capitalize;
+  font-size: large;    
+}
   
 .flavorTextButton{
   height: 20px;
@@ -25,4 +25,11 @@
   margin-right: 5px;    
   clip-path: 
    polygon(0 0, 100% 50%, 0 100%);
+}
+
+.textToAudio{  
+  font-size:small;
+  margin-top: 10px;
+  float: right;
+  color: #c9c9c9;
 }

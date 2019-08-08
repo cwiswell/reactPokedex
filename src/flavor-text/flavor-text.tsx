@@ -11,12 +11,12 @@ const FlavorTextDisplay: React.FC<FlavorTextProps> = (props) => {
     const [flavorText, setFlavorText] = useState<string>("No information available.");
     const [currentIndex, setCurrentIndex] = useState<number>(-1);
 
-    if (props.flavorTexts.length === 0 && currentIndex !== -1) {        
+    if (props.flavorTexts.length === 0 && currentIndex !== -1) {
         setGameName("Unknown");
         setFlavorText("No information available.");
         setCurrentIndex(-1);
     } else if (props.flavorTexts.length > 0 && (currentIndex === -1 || !props.flavorTexts.some(item => item.flavor_text === flavorText))) {
-        
+
         setGameName(props.flavorTexts[0].version.name);
         setFlavorText(props.flavorTexts[0].flavor_text);
         setCurrentIndex(0);
@@ -34,15 +34,21 @@ const FlavorTextDisplay: React.FC<FlavorTextProps> = (props) => {
         if (nextFlavorText === null || nextFlavorText === undefined) {
             return;
         }
-
+        
         setGameName(nextFlavorText.version.name);
         setFlavorText(nextFlavorText.flavor_text);
         setCurrentIndex(nextIndex);
     };
 
+    const speakText = () => {
+        let msg = new SpeechSynthesisUtterance(flavorText);
+        window.speechSynthesis.speak(msg);
+    }
+
     return (
-        <div className="flavorTextArea" onClick={nextText}>
-            <div className="flavorTextButton"></div>
+        <div className="flavorTextArea">            
+            <div className="flavorTextButton" onClick={nextText}></div>
+            <div className="textToAudio" onClick={speakText}>Text-to-Audio</div>
             <div className="gameText">
                 Game: {gameName}
             </div>

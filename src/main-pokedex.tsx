@@ -21,7 +21,7 @@ const Pokedex: React.FC<any> = () => {
     if (previousSearchString !== null && searchString === previousSearchString) {
       return;
     }
-
+    
     let pokemonDataPromise = pokeapi.getPokemon(searchString);
 
     if (pokemonDataPromise === undefined || pokemonDataPromise === null) {
