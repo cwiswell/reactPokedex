@@ -48,7 +48,6 @@ const Pokedex: React.FC<any> = () => {
     return lang.name === language;
   };
 
-
   let filteredFlavorText: Array<FlavorText> = [];
 
   if (pokemon !== null && pokemon.speciesData !== null) {

@@ -58,7 +58,6 @@ const FlavorTextDisplay: React.FC<FlavorTextProps> = (props) => {
             </div>
         </div>
     );
-
 }
 
 export default FlavorTextDisplay;

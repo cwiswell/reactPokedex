@@ -2,7 +2,6 @@ import axios from 'axios';
 import Pokemon from '../interfaces/pokemon';
 import Species from '../interfaces/species';
 
-//const CACHE_PREFIX = "pokeapi-ts-wrapper-";
 const apiPrefix: string = 'https://pokeapi.co/api/v2';
 
 export default class PokeApiService {
