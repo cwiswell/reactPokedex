@@ -11,9 +11,8 @@ const Pokedex: React.FC<any> = () => {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [searchString, setSearchString] = useState<string | null>(null);
   const [errorText, setErrorText] = useState<string | null>(null);
-  const language = 'en';
-  //const [language, setLanguage] = useState<string>('en');
   const [previousSearchString, setpreviousSearchString] = useState<string | null>(null);
+  const language = 'en';  
 
   const pokeapi: PokeApiService = new PokeApiService();
 
